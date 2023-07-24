@@ -25,6 +25,7 @@ function setup() {
 
     createCanvas(canvasWidth, canvasHeight);
     currentState = new MainMenuState();
+    textFont("Consolas");
 }
 
 function draw() {

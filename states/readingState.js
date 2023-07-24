@@ -9,14 +9,14 @@ class ReadingState extends BaseState {
 
     draw() {
         image(this.background, 0, 0, width, height);
-        textSize(height / 25);
+        textSize(height / 26);
         let y = Math.floor(height / 5);
         let spacing = height / 18;
         for (let line of this.pages[this.currentPage]) {
-            this.drawShadowedText(line, width / 6, y);
+            this.drawShadowedText(line, width / 12, y);
             y += spacing;
         }
-        this.drawShadowedText("Press space to continue...", width / 6, height * 4 / 5);
+        this.drawShadowedText("Press space to continue...", width / 12, height * 5 / 6);
     }
 
     keyPressed() {

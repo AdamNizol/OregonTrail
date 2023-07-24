@@ -5,7 +5,7 @@ class CharacterSelectState extends BaseState {
             "1. Be a banker from Boston",
             "2. Be a carpenter from Ohio",
             "3. Be a farmer from Illinois",
-            "4. Find out the differences between these choices"
+            "4. Find out the differences between\n   these choices"
         ];
         this.userInput = "";
         this.background = loadImage('assets/images/background_decision.png');
@@ -14,12 +14,14 @@ class CharacterSelectState extends BaseState {
     draw() {
         image(this.background, 0, 0, width, height);
         textSize(height / 25);
+
         let y = height / 3;
         let spacing = height / 18;
         for (let option of this.options) {
             this.drawShadowedText(option, width / 6, y);
             y += spacing;
         }
+        y += spacing*1.5;
         this.drawShadowedText("What is your choice?", width / 6, y);
         this.drawShadowedText(this.userInput, width / 6, y + spacing);
     }
@@ -42,7 +44,7 @@ class CharacterSelectState extends BaseState {
                     "Choosing to be a carpenter from Ohio provides a\nmiddle-ground option. You'll start with fewer\nresources than a banker, but more than a farmer.\nYour skills as a carpenter could come in handy\nduring the journey. The scoring for carpenters is\nbalanced, providing a moderate number of points.",
                     "The hardest but potentially most rewarding choice\nis to be a farmer from Illinois. As a farmer, you\nstart with the least resources, making your\njourney more challenging. However, overcoming\nthese challenges earns you the greatest number of\npoints, reflecting your perseverance and\nresourcefulness.",
                     "The choice of profession adds a strategic element\nto your journey. Whether you seek a comfortable\njourney or the glory of a high score, choose wisely!",
-                    "To give you a clearer picture, here are the starting\nresources for each profession:\nBanker: $1600\nCarpenter: $800 (2x Points)\nFarmer: $400 (3x Points)\n\nChoose your profession keeping in mind that more\nresources make the journey easier, but the true\nreward lies in overcoming challenges."
+                    "To give you a clearer picture, here are the starting\nresources for each profession:\nBanker:    $1600\nCarpenter: $800 (2x Points)\nFarmer:    $400 (3x Points)\n\nChoose your profession keeping in mind that more\nresources make the journey easier, but the true\nreward lies in overcoming challenges."
                 ];
                 let professionPages = gameMode === "Classic" ? classicProfessionPages : extendedProfessionPages;
                 currentState = new ReadingState(professionPages, this);

@@ -12,8 +12,8 @@ class MainMenuState extends BaseState {
 
     draw() {
         image(this.background, 0, 0, width, height);
-        textSize(height / 25);
-        let y = height / 3;
+        textSize(height / 27);
+        let y = height / 3.03;
         let spacing = height / 18;
         for (let option of this.options) {
             this.drawShadowedText(option, width / 6, y);
