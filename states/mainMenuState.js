@@ -13,8 +13,8 @@ class MainMenuState extends BaseState {
     draw() {
         image(this.background, 0, 0, width, height);
         textSize(height / 27);
-        let y = height / 3.03;
-        let spacing = height / 18;
+        let y = Math.floor(height / 3.07);
+        let spacing = height / 17;
         for (let option of this.options) {
             this.drawShadowedText(option, width / 6, y);
             y += spacing;
@@ -81,6 +81,6 @@ class MainMenuState extends BaseState {
     }
 
     windowResized() {
-        this.canvasResizing();
+        // No need to handle resizing here
     }
 }

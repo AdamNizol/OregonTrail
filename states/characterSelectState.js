@@ -15,7 +15,7 @@ class CharacterSelectState extends BaseState {
         image(this.background, 0, 0, width, height);
         textSize(height / 25);
 
-        let y = height / 3;
+        let y = height / 4;
         let spacing = height / 18;
         for (let option of this.options) {
             this.drawShadowedText(option, width / 6, y);
