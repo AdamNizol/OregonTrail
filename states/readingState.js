@@ -1,6 +1,6 @@
 class ReadingState extends BaseState {
-    constructor(pages, returnState) {
-        super();
+    constructor(gameData, pages, returnState) {
+        super(gameData);
         this.pages = pages.map(page => page.split('\n')); // Split each page into lines
         this.currentPage = 0;
         this.returnState = returnState;

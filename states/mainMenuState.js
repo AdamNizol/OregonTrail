@@ -1,6 +1,6 @@
 class MainMenuState extends BaseState {
-    constructor() {
-        super();
+    constructor(gameData) {
+        super(gameData);
         this.options = [
             "1. Travel the trail",
             "2. Learn about the trail",
@@ -26,7 +26,7 @@ class MainMenuState extends BaseState {
     handleUserInput(input) {
         switch(input) {
             case "1":
-                currentState = new CharacterSelectState();
+                currentState = new CharacterSelectState(this.gameData);
                 break;
             case "2":
                 let classicLearnPages = [
@@ -43,15 +43,15 @@ class MainMenuState extends BaseState {
                     "Upon reaching the Dalles, you'll face the choice of\nnavigating the Columbia River or taking the Barlow\nRoad. If the thought of tackling the river's rapids\nwith a makeshift raft makes you uneasy, the Barlow\nRoad might be the safer choice.",
                     "Survival is not guaranteed -- numerous dangers\nawait, from wagon fires and oxen thieves to food\nshortages and diseases like cholera. However, don't\nlose heart! You can always try again, using your\nprevious experiences to inform your future\ndecisions. Remember, persistence is key on the\nOregon Trail."
                 ];                
-                let learnPages = gameMode === "Classic" ? classicLearnPages : extendedLearnPages;
-                currentState = new ReadingState(learnPages, this);
+                let learnPages = this.gameData.gameMode === "Classic" ? classicLearnPages : extendedLearnPages;
+                currentState = new ReadingState(this.gameData, learnPages, this);
                 break;
             case "3":
-                if (gameMode === "Classic") {
-                    gameMode = "Extended";
+                if (this.gameData.gameMode === "Classic") {
+                    this.gameData.gameMode = "Extended";
                     this.options[2] = "3. Switch to Classic Mode";
                 } else {
-                    gameMode = "Classic";
+                    this.gameData.gameMode = "Classic";
                     this.options[2] = "3. Switch to Extended Mode";
                 }
                 break;

@@ -1,6 +1,6 @@
 class GameState extends BaseState {
-    constructor() {
-        super();
+    constructor(gameData) {
+        super(gameData);
         this.gameStarted = false;
     }
 

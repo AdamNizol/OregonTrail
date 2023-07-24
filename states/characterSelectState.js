@@ -1,6 +1,6 @@
 class CharacterSelectState extends BaseState {
-    constructor() {
-        super();
+    constructor(gameData) {
+        super(gameData);
         this.options = [
             "1. Be a banker from Boston",
             "2. Be a carpenter from Ohio",
@@ -46,8 +46,8 @@ class CharacterSelectState extends BaseState {
                     "The choice of profession adds a strategic element\nto your journey. Whether you seek a comfortable\njourney or the glory of a high score, choose wisely!",
                     "To give you a clearer picture, here are the starting\nresources for each profession:\nBanker:    $1600\nCarpenter: $800 (2x Points)\nFarmer:    $400 (3x Points)\n\nChoose your profession keeping in mind that more\nresources make the journey easier, but the true\nreward lies in overcoming challenges."
                 ];
-                let professionPages = gameMode === "Classic" ? classicProfessionPages : extendedProfessionPages;
-                currentState = new ReadingState(professionPages, this);
+                let professionPages = this.gameData.gameMode === "Classic" ? classicProfessionPages : extendedProfessionPages;
+                currentState = new ReadingState(this.gameData, professionPages, this);
                 break;
         }
         this.userInput = "";

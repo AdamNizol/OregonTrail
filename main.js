@@ -1,9 +1,7 @@
 let currentState;
 let mainMenuBackground;
 let decisionBackground;
-
-// Add a variable to track the game mode
-let gameMode = "Extended";  // Default mode is Extended
+let gameData;
 
 function preload() {
     mainMenuBackground = loadImage("assets/images/background_MainMenu.png");
@@ -24,7 +22,8 @@ function setup() {
     }
 
     createCanvas(canvasWidth, canvasHeight);
-    currentState = new MainMenuState();
+    gameData = new GameData();
+    currentState = new MainMenuState(gameData);
     textFont("Consolas");
 }
 
