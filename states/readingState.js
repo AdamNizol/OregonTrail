@@ -28,13 +28,6 @@ class ReadingState extends BaseState {
         }
     }
 
-    drawShadowedText(txt, x, y) {
-        fill(0);
-        text(txt, x + 2, y + 2);
-        fill(255);
-        text(txt, x, y);
-    }
-
     windowResized() {
         this.canvasResizing();
     }

@@ -14,4 +14,11 @@ class BaseState {
     handleInput() {
         // Handle input method to be overridden by subclasses.
     }
+
+    drawShadowedText(txt, x, y) {
+        fill(0);
+        text(txt, x + 2, y + 2);
+        fill(255);
+        text(txt, x, y);
+    }
 }
