@@ -1,6 +1,6 @@
 class CharacterSelectState extends BaseState {
-    constructor(gameData) {
-        super(gameData);
+    constructor() {
+        super();
         this.options = [
             "1. Be a banker from Boston",
             "2. Be a carpenter from Ohio",
@@ -8,7 +8,7 @@ class CharacterSelectState extends BaseState {
             "4. Find out the differences between\n   these choices"
         ];
         this.userInput = "";
-        this.background = loadImage('assets/images/background_decision.png');
+        this.background = gameData.assets.images.decisionBackground;
     }
 
     draw() {
@@ -29,10 +29,22 @@ class CharacterSelectState extends BaseState {
     handleUserInput(input) {
         switch(input) {
             case "1":
+                gameData.profession = "banker";
+                gameData.money = 1600;
+                gameData.pointsMultiplier = 1;
+                currentState = new PartySetupState();
                 break;
             case "2":
+                gameData.profession = "carpenter";
+                gameData.money = 800;
+                gameData.pointsMultiplier = 2;
+                currentState = new PartySetupState();
                 break;
             case "3":
+                gameData.profession = "farmer";
+                gameData.money = 400;
+                gameData.pointsMultiplier = 3;
+                currentState = new PartySetupState();
                 break;
             case "4":
                 let classicProfessionPages = [
@@ -46,8 +58,8 @@ class CharacterSelectState extends BaseState {
                     "The choice of profession adds a strategic element\nto your journey. Whether you seek a comfortable\njourney or the glory of a high score, choose wisely!",
                     "To give you a clearer picture, here are the starting\nresources for each profession:\nBanker:    $1600\nCarpenter: $800 (2x Points)\nFarmer:    $400 (3x Points)\n\nChoose your profession keeping in mind that more\nresources make the journey easier, but the true\nreward lies in overcoming challenges."
                 ];
-                let professionPages = this.gameData.gameMode === "Classic" ? classicProfessionPages : extendedProfessionPages;
-                currentState = new ReadingState(this.gameData, professionPages, this);
+                let professionPages = gameData.gameMode === "Classic" ? classicProfessionPages : extendedProfessionPages;
+                currentState = new ReadingState(professionPages, this);
                 break;
         }
         this.userInput = "";

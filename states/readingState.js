@@ -1,10 +1,10 @@
 class ReadingState extends BaseState {
-    constructor(gameData, pages, returnState) {
-        super(gameData);
+    constructor(pages, returnState) {
+        super();
         this.pages = pages.map(page => page.split('\n')); // Split each page into lines
         this.currentPage = 0;
         this.returnState = returnState;
-        this.background = loadImage('assets/images/background_decision.png');
+        this.background = gameData.assets.images.decisionBackground;
     }
 
     draw() {

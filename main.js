@@ -1,11 +1,8 @@
 let currentState;
-let mainMenuBackground;
-let decisionBackground;
 let gameData;
 
 function preload() {
-    mainMenuBackground = loadImage("assets/images/background_MainMenu.png");
-    decisionBackground = loadImage("assets/images/background_decision.png");
+    gameData = new GameData();
 }
 
 function setup() {
@@ -22,8 +19,7 @@ function setup() {
     }
 
     createCanvas(canvasWidth, canvasHeight);
-    gameData = new GameData();
-    currentState = new MainMenuState(gameData);
+    currentState = new MainMenuState();
     textFont("Consolas");
 }
 

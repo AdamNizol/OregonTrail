@@ -1,6 +1,5 @@
 class BaseState {
-    constructor(gameData) {
-        this.gameData = gameData;
+    constructor() {
     }
 
     update() {

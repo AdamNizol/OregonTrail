@@ -4,64 +4,103 @@ class GameData {
     }
 
     reset() {
-        this.gameMode = "Extended"; // Classic or Extended
-        this.profession = ""; // Banker, Carpenter, Farmer
+        this.confirmationStrings = ["yes", "y", "yeah","confirm", "affirmative", "ok", "okay", "sure", "yep", "accept", "agree", "approve"]
+        this.denialStrings = ["no", "n", "nope", "deny", "negative", "decline", "nah", "nay", "refuse", "reject", "cancel", "disagree", "disapprove"]
+        this.assets = {
+            images: {
+                mainMenuBackground: loadImage("assets/images/background_MainMenu.png"),
+                decisionBackground: loadImage("assets/images/background_decision.png")
+            },
+            sounds: {
+            }
+        };
+
+        // Game mode: Classic or Extended
+        this.gameMode = "Extended"; 
+
+        // The profession of the player: Banker, Carpenter, Farmer
+        this.profession = "";
+
+        // The amount of money player has
         this.money = 0;
+
+        // The amount of food player has
         this.food = 0;
+
+        // The distance travelled by player
         this.distance = 0;
-        this.pointMultiplier = 1; // 1, 2, or 3
-        // Add other game-related variables as needed
+
+        // The point multiplier based on the profession of the player
+        this.pointMultiplier = 1; 
+
+        // The health status of the party, value between 0-100
+        this.health = 100; 
+
+        // The pace at which the party is moving
+        this.pace = "steady";
+
+        // The current weather condition
+        this.weather = "fair"; 
+
+        // The inventory of the player
+        this.inventory = {
+            bullets: 0,
+            wagonParts: 0,
+            clothes: 0,
+        };
+
+        // The members of the party
+        this.partyMembers = [];
+
+        // The current date in the game
+        this.currentDate = new Date(1848, 3, 1); // April 1, 1848
+
+        // Miles travelled by the party
+        this.milesTraveled = 0;
+
+        // Miles to the next landmark
+        this.milesToNextLandmark = 0;
     }
 
-    setMode(mode) {
-        this.gameMode = mode;
+    // Methods for interacting with the data ...
+
+    // Examples:
+    setWeather(newWeather) {
+        this.weather = newWeather;
     }
 
-    setProfession(profession) {
-        this.profession = profession;
-        switch(profession) {
-            case "Banker":
-                this.money = 1600;
-                this.pointMultiplier = 1;
-                break;
-            case "Carpenter":
-                this.money = 800;
-                this.pointMultiplier = 2;
-                break;
-            case "Farmer":
-                this.money = 400;
-                this.pointMultiplier = 3;
-                break;
+    setPace(newPace) {
+        this.pace = newPace;
+    }
+
+    addInventoryItem(item, quantity) {
+        if (this.inventory[item] !== undefined) {
+            this.inventory[item] += quantity;
         }
     }
 
-    addMoney(amount) {
-        this.money += amount;
-    }
-
-    useMoney(amount) {
-        if (amount <= this.money) {
-            this.money -= amount;
+    useInventoryItem(item, quantity) {
+        if (this.inventory[item] !== undefined && this.inventory[item] >= quantity) {
+            this.inventory[item] -= quantity;
             return true;
         }
-        return false; // Not enough money
+        return false; // Not enough items
     }
 
-    addFood(amount) {
-        this.food += amount;
+    addPartyMember(member) {
+        this.partyMembers.push(member);
     }
 
-    useFood(amount) {
-        if (amount <= this.food) {
-            this.food -= amount;
-            return true;
+    removePartyMember(member) {
+        const index = this.partyMembers.indexOf(member);
+        if (index > -1) {
+            this.partyMembers.splice(index, 1);
         }
-        return false; // Not enough food
     }
 
-    advance(distance) {
-        this.distance += distance;
+    advanceDate(days) {
+        this.currentDate.setDate(this.currentDate.getDate() + days);
     }
 
-    // Add other methods as needed to interact with the game data
+    // Continue adding other methods as needed to interact with the game data
 }
