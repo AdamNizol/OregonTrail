@@ -30,19 +30,19 @@ class CharacterSelectState extends BaseState {
         switch(input) {
             case "1":
                 gameData.profession = "banker";
-                gameData.money = 1600;
+                gameData.inventory.money = 1600;
                 gameData.pointsMultiplier = 1;
                 currentState = new PartySetupState();
                 break;
             case "2":
                 gameData.profession = "carpenter";
-                gameData.money = 800;
+                gameData.inventory.money = 800;
                 gameData.pointsMultiplier = 2;
                 currentState = new PartySetupState();
                 break;
             case "3":
                 gameData.profession = "farmer";
-                gameData.money = 400;
+                gameData.inventory.money = 400;
                 gameData.pointsMultiplier = 3;
                 currentState = new PartySetupState();
                 break;

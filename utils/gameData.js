@@ -21,39 +21,41 @@ class GameData {
         // The profession of the player: Banker, Carpenter, Farmer
         this.profession = "";
 
-        // The amount of money player has
-        this.money = 0;
-
-        // The amount of food player has
-        this.food = 0;
-
         // The distance travelled by player
         this.distance = 0;
 
         // The point multiplier based on the profession of the player
         this.pointMultiplier = 1; 
 
-        // The health status of the party, value between 0-100
-        this.health = 100; 
+        // The health status of the party
+        this.health = "Good"; // Good, Fair, Poor, Very Poor
 
         // The pace at which the party is moving
-        this.pace = "steady";
+        this.pace = "Steady"; // Steady, Strenuous, Grueling
+
+        // The rations of the party
+        this.rations = "Filling"; // Filling, Meager, Bare Bones
 
         // The current weather condition
-        this.weather = "fair"; 
+        this.weather = "Fair"; // TODO: figure out what the weather conditions are
 
         // The inventory of the player
         this.inventory = {
             bullets: 0,
-            wagonParts: 0,
+            wagonWheels: 0,
+            wagonAxles: 0,
+            wagonTongues: 0,
+            oxen: 0,
             clothes: 0,
+            food: 0,
+            money: 0
         };
 
         // The members of the party
         this.partyMembers = [];
 
         // The current date in the game
-        this.currentDate = new Date(1848, 3, 1); // April 1, 1848
+        this.currentDate = new Date(1848, 2, 1); // March 1, 1848
 
         // Miles travelled by the party
         this.milesTraveled = 0;
@@ -65,28 +67,6 @@ class GameData {
     // Methods for interacting with the data ...
 
     // Examples:
-    setWeather(newWeather) {
-        this.weather = newWeather;
-    }
-
-    setPace(newPace) {
-        this.pace = newPace;
-    }
-
-    addInventoryItem(item, quantity) {
-        if (this.inventory[item] !== undefined) {
-            this.inventory[item] += quantity;
-        }
-    }
-
-    useInventoryItem(item, quantity) {
-        if (this.inventory[item] !== undefined && this.inventory[item] >= quantity) {
-            this.inventory[item] -= quantity;
-            return true;
-        }
-        return false; // Not enough items
-    }
-
     addPartyMember(member) {
         this.partyMembers.push(member);
     }
