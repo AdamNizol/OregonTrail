@@ -3,7 +3,6 @@ class PartySetupState extends GameState {
         super();
         this.partyNames = ["", "", "", "", ""];
         this.currentMember = 0;  // Start with the player, then ask for the other party members
-        this.title = "Who is in your party?";
         this.prompt = "What is the first name of the wagon leader?";
         this.userInput = "";
         this.background = gameData.assets.images.decisionBackground;
@@ -44,15 +43,20 @@ class PartySetupState extends GameState {
         }
     }
 
+    keyPressed() {
+        if (keyCode === BACKSPACE) {
+            this.partyNames[this.currentMember] = this.partyNames[this.currentMember].slice(0, -1);
+        }
+    }
+
     keyTyped() {
         if (keyCode === ENTER) {
             this.handleUserInput(this.partyNames[this.currentMember]);
-        } else if (keyCode === BACKSPACE) {
-            this.partyNames[this.currentMember] = this.partyNames[this.currentMember].slice(0, -1);
         } else {
             this.partyNames[this.currentMember] += key;
         }
     }
+    
     
 
     generateRandomName() {
