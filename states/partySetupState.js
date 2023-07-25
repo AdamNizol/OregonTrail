@@ -3,7 +3,8 @@ class PartySetupState extends GameState {
         super();
         this.partyNames = ["", "", "", "", ""];
         this.currentMember = 0;  // Start with the player, then ask for the other party members
-        this.prompt = "What is the first name of the wagon leader?";
+        this.prompt = "What is the first name of your leader\nand the four other members in your party?";
+        this.tips = ["Enter names or press Enter"]
         this.userInput = "";
         this.background = gameData.assets.images.decisionBackground;
     }
@@ -14,7 +15,7 @@ class PartySetupState extends GameState {
 
         let y = height / 5;
         let x = width / 6;
-        this.drawShadowedText("What are the first name of your leader\nand the four other members in your party?", x, y);
+        this.drawShadowedText(this.prompt, x, y);
 
         let spacing = height / 18;
         y += Math.floor(spacing*1.5);
@@ -25,10 +26,27 @@ class PartySetupState extends GameState {
             }
             this.drawShadowedText((i + 1) + ". " + name, x, y + ((i + 1) * spacing));
         }
-        this.drawShadowedText("[Enter names or press Enter]", x, height * 5 / 6);
+        // this.drawShadowedText(`[${this.tip}]`, x, height * 5 / 6);
+        for (let i = 0; i < this.tips.length; i++) {
+            this.drawShadowedText(`[${this.tips[i]}]`, x, height * 5 / 6 + (i * spacing));
+        }
+    }
+
+    setDefaultText() {
+        this.prompt = "What is the first name of your leader\nand the four other members in your party?";
+        this.tips = ["Enter names or press Enter"]
     }
 
     handleUserInput(input) {
+        if(this.currentMember === 5) {
+            // gameData.partyNames = this.partyNames;
+            for (let i = 0; i < this.partyNames.length; i++) {
+                gameData.addPartyMember(new PartyMember(this.partyNames[i], (i===0)));
+            }
+            // TODO: Go to next state
+            return;
+        }
+
         if (input.trim() === "") {
             input = this.generateRandomName();
         }
@@ -36,16 +54,30 @@ class PartySetupState extends GameState {
         this.currentMember++;
         this.userInput = "";
         if (this.currentMember > 4) {
-            gameData.partyNames = this.partyNames;
-            // Transition to the next state
+            this.prompt = "Here are the members of your party:";
+            this.tips = ["Press Enter to accept", "press UP_ARROW to edit your party"];
+            
         } else {
-            this.prompt = `Enter the name of party member ${this.currentMember + 1}:`;
+            this.setDefaultText();
         }
     }
 
     keyPressed() {
         if (keyCode === BACKSPACE) {
             this.partyNames[this.currentMember] = this.partyNames[this.currentMember].slice(0, -1);
+        }else if (keyCode === UP_ARROW) {
+            this.currentMember--;
+            if (this.currentMember < 0) {
+                this.currentMember = 0;
+            }
+            this.setDefaultText();
+        }else if (keyCode === DOWN_ARROW) {
+            if (this.partyNames[this.currentMember].trim() != "") {
+                this.currentMember++;
+                if (this.currentMember > 4) {
+                    this.currentMember = 4;
+                }
+            }
         }
     }
 

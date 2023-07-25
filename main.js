@@ -11,10 +11,10 @@ function setup() {
     let canvasHeight;
 
     if (windowWidth / windowHeight > aspectRatio) {
-        canvasHeight = windowHeight;
+        canvasHeight = windowHeight-5;
         canvasWidth = canvasHeight * aspectRatio;
     } else {
-        canvasWidth = windowWidth;
+        canvasWidth = windowWidth-5;
         canvasHeight = canvasWidth / aspectRatio;
     }
 
@@ -34,10 +34,10 @@ function windowResized() {
     let canvasHeight;
 
     if (windowWidth / windowHeight > aspectRatio) {
-        canvasHeight = windowHeight;
+        canvasHeight = windowHeight-5;
         canvasWidth = canvasHeight * aspectRatio;
     } else {
-        canvasWidth = windowWidth;
+        canvasWidth = windowWidth-5;
         canvasHeight = canvasWidth / aspectRatio;
     }
 
