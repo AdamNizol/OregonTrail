@@ -56,12 +56,6 @@ class GameData {
 
         // The current date in the game
         this.currentDate = new Date(1848, 2, 1); // March 1, 1848
-
-        // Miles travelled by the party
-        this.milesTraveled = 0;
-
-        // Miles to the next landmark
-        this.milesToNextLandmark = 0;
     }
 
     // Methods for interacting with the data ...
