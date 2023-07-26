@@ -61,9 +61,23 @@ class DepartureMonthState extends BaseState {
         if (input in this.monthNumbers) {
             gameData.currentDate.setMonth(this.monthNumbers[input]);
             print(gameData.currentDate);
-            currentState = new GameState();  // Replace with the actual next state
+            print(gameData.currentDate.getMonth());
+            let classicReadingPages = [
+                `Before leaving Independence, you should buy\nequipment and supplies. You have $${gameData.inventory.money.toFixed(2)} in cash,\nbut you don't have to spend it all now.`,
+                "You can buy whatever you need at Matt's General\nStore."
+            ]
+            let extendedReadingPages = [
+                `As you stand on the brink of your journey, you\nglance at the pouch containing your funds. It holds\n$${gameData.inventory.money.toFixed(2)}, a sum that must cover your equipment and\nprovisions. However, remember that frugality can be\na virtue, and you need not deplete all your\nresources before setting out.`,
+                `Matt's General Store stands invitingly nearby,\noffering a wealth of supplies to aid you on your\npath.\n\nRemember, wise choices here can mean the difference\nbetween survival and tragedy on the trail ahead.`,
+                `You've chosen to embark on your journey in ${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(gameData.currentDate)}.\n\nThe month of departure can significantly influence\nthe challenges you'll face. Choose your supplies\ncarefully considering the varying weather and\nconditions of your chosen month.`
+            ];
+            
+            currentState = new ReadingState(
+                gameData.gameMode === "Classic" ? classicReadingPages : extendedReadingPages, 
+                new GameState() // TODO: Replace with the actual next state (Matt's General Store)
+            );
         } else if (input === "6") {
-            // Add logic for advice
+            // TODO: add ReadingState
         }
         this.userInput = "";
     }
