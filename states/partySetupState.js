@@ -44,6 +44,7 @@ class PartySetupState extends GameState {
                 gameData.addPartyMember(new PartyMember(this.partyNames[i], (i===0)));
             }
             // TODO: Go to next state
+            currentState = new DepartureMonthState();
             return;
         }
 
