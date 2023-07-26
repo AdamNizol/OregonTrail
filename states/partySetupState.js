@@ -101,8 +101,4 @@ class PartySetupState extends GameState {
         }
         return result;
     }
-
-    windowResized() {
-        // Empty for now, add necessary code here
-    }
 }

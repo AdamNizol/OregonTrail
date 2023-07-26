@@ -97,8 +97,4 @@ class DepartureMonthState extends BaseState {
             this.handleUserInput(this.userInput);
         }
     }
-
-    windowResized() {
-        // Empty for now, add necessary code here
-    }
 }

@@ -72,8 +72,4 @@ class MainMenuState extends BaseState {
             this.userInput += key;
         }
     }
-
-    windowResized() {
-        // No need to handle resizing here
-    }
 }

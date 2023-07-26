@@ -27,8 +27,4 @@ class ReadingState extends BaseState {
             }
         }
     }
-
-    windowResized() {
-        this.canvasResizing();
-    }
 }

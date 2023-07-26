@@ -20,4 +20,8 @@ class BaseState {
         fill(255);
         text(txt, x, y);
     }
+
+    windowResized() {
+        // Window resize method which can be overridden by subclasses. Automatically called by p5.js when the window is resized.
+    }
 }

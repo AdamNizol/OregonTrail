@@ -79,7 +79,4 @@ class CharacterSelectState extends BaseState {
         }
     }
 
-    windowResized() {
-        // Empty for now, add necessary code here
-    }
 }
