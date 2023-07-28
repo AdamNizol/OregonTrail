@@ -43,7 +43,6 @@ class PartySetupState extends GameState {
             for (let i = 0; i < this.partyNames.length; i++) {
                 gameData.addPartyMember(new PartyMember(this.partyNames[i], (i===0)));
             }
-            // TODO: Go to next state
             currentState = new DepartureMonthState();
             return;
         }

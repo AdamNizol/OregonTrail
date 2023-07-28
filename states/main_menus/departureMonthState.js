@@ -74,7 +74,7 @@ class DepartureMonthState extends BaseState {
             
             currentState = new ReadingState(
                 gameData.gameMode === "Classic" ? classicReadingPages : extendedReadingPages, 
-                new GameState() // TODO: Replace with the actual next state (Matt's General Store)
+                new MattsGeneralStoreState()
             );
         } else if (input === "6") {
             // TODO: add ReadingState
