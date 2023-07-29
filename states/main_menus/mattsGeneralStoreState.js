@@ -26,6 +26,8 @@ class MattsGeneralStoreState extends BaseState {
         let txt = "Press enter to continue..."
         if (this.offers[this.currentSelection].purchaseQuantity == 0) {
             txt = `Enter quantity to purchase...`
+        }else if (this.currentSelection === this.offers.length - 1) {
+            txt = "Press enter to purchase..."
         }
 
         this.drawShadowedText(txt, width / 12, height * 9 / 10);

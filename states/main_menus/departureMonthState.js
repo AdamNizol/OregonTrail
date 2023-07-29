@@ -60,8 +60,6 @@ class DepartureMonthState extends BaseState {
     handleUserInput(input) {
         if (input in this.monthNumbers) {
             gameData.currentDate.setMonth(this.monthNumbers[input]);
-            print(gameData.currentDate);
-            print(gameData.currentDate.getMonth());
             let classicReadingPages = [
                 `Before leaving Independence, you should buy\nequipment and supplies. You have $${gameData.inventory.money.toFixed(2)} in cash,\nbut you don't have to spend it all now.`,
                 "You can buy whatever you need at Matt's General\nStore."
