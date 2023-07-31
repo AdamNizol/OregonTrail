@@ -82,7 +82,8 @@ class MattsGeneralStoreState extends BaseState {
         } else if (this.offers[1].purchaseQuantity === 0) { // if no food is purchased
             currentState = new ReadingState(["You need food for your journey."], this);
         } else {
-            console.log("now we send player to the offer accept/decline state")
+            // sent to trade offer state
+            currentState = new TradeOfferState(this.offers, new GameState(), this); // TODO: change GameState to TravelingState when it is created
         }
 
     }
@@ -105,6 +106,7 @@ class MattsGeneralStoreState extends BaseState {
 
     keyTyped() {
         if (keyCode === ENTER) {
+            this.userInput = this.userInput.trim();
             if (this.currentSelection === this.offers.length - 1) {
                 this.userConfirmed();
             } else if (this.offers[this.currentSelection].purchaseQuantity != 0) {

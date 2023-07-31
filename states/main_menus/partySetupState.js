@@ -83,6 +83,7 @@ class PartySetupState extends GameState {
 
     keyTyped() {
         if (keyCode === ENTER) {
+            this.userInput = this.userInput.trim();
             this.handleUserInput(this.partyNames[this.currentMember]);
         } else {
             this.partyNames[this.currentMember] += key;

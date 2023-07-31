@@ -92,6 +92,7 @@ class DepartureMonthState extends BaseState {
         if (keyCode === BACKSPACE) {
             this.userInput = this.userInput.slice(0, -1);
         } else if (keyCode === ENTER) {
+            this.userInput = this.userInput.trim();
             this.handleUserInput(this.userInput);
         }
     }

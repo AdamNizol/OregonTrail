@@ -4,8 +4,8 @@ class GameData {
     }
 
     reset() {
-        this.confirmationStrings = ["yes", "y", "yeah","confirm", "affirmative", "ok", "okay", "sure", "yep", "accept", "agree", "approve"]
-        this.denialStrings = ["no", "n", "nope", "deny", "negative", "decline", "nah", "nay", "refuse", "reject", "cancel", "disagree", "disapprove"]
+        this.confirmationStrings = ["yes", "y", "yeah","confirm", "affirmative", "ok", "okay", "sure", "yep", "accept", "agree", "approve", "i do", "aye", "oui", "si", "ja", "alright", "fine"]
+        this.denialStrings = ["no", "n", "nope", "deny", "negative", "decline", "nah", "nay", "refuse", "reject", "cancel", "disagree", "disapprove", "i don't", "i do not", "non", "nein"]
         this.assets = {
             images: {
                 mainMenuBackground: loadImage("assets/images/background_MainMenu.png"),

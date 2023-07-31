@@ -73,6 +73,7 @@ class CharacterSelectState extends BaseState {
 
     keyTyped() {
         if (keyCode === ENTER) {
+            this.userInput = this.userInput.trim();
             this.handleUserInput(this.userInput);
         } else if (keyCode !== BACKSPACE && (this.userInput.length > 0 || key !== " ")) {
             this.userInput += key;
