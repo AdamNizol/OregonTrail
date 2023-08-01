@@ -12,6 +12,7 @@ class MattsGeneralStoreState extends BaseState {
         ];
         this.userInput = "";
         this.currentSelection = 0;
+        this.background = gameData.assets.images.decisionBackground;
     }
 
     draw() {
@@ -34,7 +35,7 @@ class MattsGeneralStoreState extends BaseState {
     }
 
     drawBackground() {
-        image(gameData.assets.images["decisionBackground"], 0, 0, width, height);
+        image(this.background, 0, 0, width, height);
     }
 
     drawTitle() {
@@ -83,7 +84,8 @@ class MattsGeneralStoreState extends BaseState {
             currentState = new ReadingState(["You need food for your journey."], this);
         } else {
             // sent to trade offer state
-            currentState = new TradeOfferState(this.offers, new GameState(), this); // TODO: change GameState to TravelingState when it is created
+            console.log("trade offer state");
+            currentState = new TradeOfferState(this.offers, new StartScreenState(), this);
         }
 
     }
