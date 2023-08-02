@@ -59,7 +59,7 @@ class TradeOfferState extends BaseState {
                     // Process the trade here, e.g., update the player's inventory and balance
                     for (const offer of this.offers) {
                         gameData.inventory.money -= offer.purchaseQuantity * offer.price;
-                        gameData.inventory[offer.item] += offer.purchaseQuantity * offer.quantity;
+                        gameData.inventory[offer.id] += offer.purchaseQuantity * offer.quantity;
                     }
                     // Transition to the accept state after a confirmation message
                     currentState = new ReadingState(["You have accepted the trade offer."], this.acceptState);

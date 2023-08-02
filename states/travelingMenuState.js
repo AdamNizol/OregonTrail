@@ -18,7 +18,7 @@ class TravelingMenuState extends BaseState {
     handleUserInput(input) {
         switch (input.trim()) {
             case "1":
-                currentState = new GameState(); // new TravelingState();
+                currentState = new TravelingState();
                 break;
             case "2":
                 // Handle checking supplies here

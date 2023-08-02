@@ -9,7 +9,8 @@ class GameData {
         this.assets = {
             images: {
                 mainMenuBackground: loadImage("assets/images/background_MainMenu.png"),
-                decisionBackground: loadImage("assets/images/background_decision.png")
+                decisionBackground: loadImage("assets/images/background_decision.png"),
+                travelingBackground: loadImage("assets/images/background_Decision.png"),
             },
             sounds: {
             }
@@ -22,7 +23,7 @@ class GameData {
         this.profession = "";
 
         // The distance travelled by player
-        this.distance = 0;
+        this.distanceTraveled = 0;
 
         // The point multiplier based on the profession of the player
         this.pointMultiplier = 1; 
