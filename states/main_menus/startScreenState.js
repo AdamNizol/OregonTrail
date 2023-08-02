@@ -23,14 +23,14 @@ class StartScreenState extends BaseState {
         this.drawShadowedText(dateString, width / 2, y);
         y += height / 10;
         textSize(height / 20);
-        this.drawShadowedText("Press enter to continue...", width / 2, y);
+        this.drawShadowedText("Press space to continue...", width / 2, y);
         textAlign(LEFT);
         
     }
 
     keyPressed() {
         if (keyCode === 32 || keyCode === 13) { // Space key or enter key
-            currentState = new GameState();
+            currentState = new TravelingMenuState();
         }
     }
 }

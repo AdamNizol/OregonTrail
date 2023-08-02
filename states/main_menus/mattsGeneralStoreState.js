@@ -83,8 +83,6 @@ class MattsGeneralStoreState extends BaseState {
         } else if (this.offers[1].purchaseQuantity === 0) { // if no food is purchased
             currentState = new ReadingState(["You need food for your journey."], this);
         } else {
-            // sent to trade offer state
-            console.log("trade offer state");
             currentState = new TradeOfferState(this.offers, new StartScreenState(), this);
         }
 
